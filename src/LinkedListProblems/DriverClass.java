@@ -10,10 +10,9 @@ public class DriverClass {
         Node newHead=addAtAnyPosition(0,head,0);
         System.out.println("After adding a new node");
         printTheList(newHead);
-
-
-
-
+        Node nh1=addAtAnyPosition(1,newHead,2);
+        System.out.println();
+        printTheList(nh1);
     }
     static Node addAtTheEnd(Node head,int data){
         Node n;
@@ -47,6 +46,17 @@ public class DriverClass {
             head=n;
             return n;
         }
-        return new Node(22,null);
+        n=new Node(data,null);
+        Node temp=head;
+        while (temp.next!=null){
+           temp=temp.next;
+           cursor+=1;
+            if(cursor==position){
+                n.next=temp.next;
+                temp.next=n;
+                break;
+            }
+        }
+        return  head;
     }
 }
