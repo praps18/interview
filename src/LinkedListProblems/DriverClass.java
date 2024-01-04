@@ -13,6 +13,17 @@ public class DriverClass {
         Node nh1=addAtAnyPosition(1,newHead,2);
         System.out.println();
         printTheList(nh1);
+        System.out.println("After deleting at desired position");
+        Node nd=deleteAtAnyPosition(nh1,0);
+        printTheList(nd);
+        System.out.println();
+        System.out.println("Another delete");
+        Node nd1=deleteAtAnyPosition(nd,2);
+        printTheList(nd1);
+        System.out.println();
+        System.out.println("delete at the end");
+        Node nd2=deleteAtAnyPosition(nd1,2);
+        printTheList(nd2);
     }
     static Node addAtTheEnd(Node head,int data){
         Node n;
@@ -54,6 +65,23 @@ public class DriverClass {
             if(cursor==position){
                 n.next=temp.next;
                 temp.next=n;
+                break;
+            }
+        }
+        return  head;
+    }
+    static Node deleteAtAnyPosition(Node head,int position){
+        int cursor=0;
+        if(position==0){
+            head=head.next;
+            return head;
+        }
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+            cursor+=1;
+            if(cursor==position-1){
+                temp.next=temp.next.next;
                 break;
             }
         }
